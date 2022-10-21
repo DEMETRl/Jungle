@@ -1,0 +1,15 @@
+
+#Finder
+.DS_Store
+
+#XCode
+*.xcodeproj
+
+# Swift Package Manager
+ Packages/
+ Package.pins
+ Package.resolved
+
+
+#Firebase
+Jungle/GoogleService-Info.plist
