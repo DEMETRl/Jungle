@@ -15,11 +15,22 @@ struct ChatView: View {
     var body: some View {
         VStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 12) {
-                    ForEach(viewModel.messages) { message in
-                        MessageView(viewModel: MessageViewModel(message: message))
+                ScrollViewReader { scrollViewProxy in
+                    VStack(alignment: .leading, spacing: 12) {
+                        ForEach(viewModel.messages) { message in
+                            MessageView(viewModel: MessageViewModel(message: message))
+                        }
+                        HStack{ Spacer() }
+                            .id("Empty")
                     }
+                    .onReceive(viewModel.$count)  { _ in
+                        withAnimation(.easeOut(duration: 0.5)) {
+                            scrollViewProxy.scrollTo("Empty", anchor: .bottom)
+                        }
+                    }
+                    
                 }
+               
             }.padding(.top)
             
             MessageInputView(inputText: $messageText, action: sendMessage)

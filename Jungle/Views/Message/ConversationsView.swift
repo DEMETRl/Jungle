@@ -43,11 +43,10 @@ struct ConversationsView: View {
                 .clipShape(Circle())
                 .padding()
                 .sheet(isPresented: $isShowingNewMessageView, content: {
-                    NewMessageView(show: $isShowingNewMessageView, startChat: $showChat, user: $user)
+                    NewMessageView(show: $isShowingNewMessageView, startChat: $showChat, user: $user) .presentationDetents([.height(500), .large])
                 })
             }
-            .navigationTitle("Messages")
-            .navigationBarTitleDisplayMode(.inline)
+           
         }
         .onAppear {
             viewModel.fetchRecentMessages()

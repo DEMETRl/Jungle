@@ -16,7 +16,7 @@ struct CommentsCell: View {
                 .cornerRadius(18)
             
             Text(comment.username).font(.system(size: 14, weight: .semibold)) +
-            Text(" \(comment.commentText)").foregroundColor(.yellow).font(.system(size: 14))
+            Text(" \(comment.commentText)").foregroundColor(.black).font(.system(size: 14))
                 
             
             Spacer()
@@ -29,6 +29,30 @@ struct CommentsCell: View {
         }.padding(.horizontal)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

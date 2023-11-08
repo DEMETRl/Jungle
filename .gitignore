@@ -1,9 +1,11 @@
 
-#Finder
+# MacOS Finder
 .DS_Store
 
-#XCode
-*.xcodeproj
+# XCode
+xcuserdata/
+*.xcworkspace
+
 
 # Swift Package Manager
  Packages/
@@ -11,5 +13,5 @@
  Package.resolved
 
 
-#Firebase
-Jungle/GoogleService-Info.plist
+# Firebase
+GoogleService-Info.plist

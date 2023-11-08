@@ -10,9 +10,8 @@ struct MessageInputView: View {
     
     var body: some View {
         
+        
         VStack {
-            
-            
             Rectangle()
                 .foregroundColor(Color(.separator))
                 .frame(width: UIScreen.main.bounds.width, height: 0.75)
@@ -20,36 +19,31 @@ struct MessageInputView: View {
 
             
             HStack {
-                
-                TextField("Message...", text: $inputText)
-                    .frame(minHeight: 35)
+                TextField("Message...", text: $inputText, axis: .vertical)
+               
                     .autocapitalization(.none)
-                             
-                                        .overlay(
-                                            Capsule()
-                                                .stroke(lineWidth: 3)
-                                                .frame(width: 320, height: 35)
-                                                .foregroundColor(.yellow)
-                                        
-                                        
-                                        
-                                        
-                                        )
+                    .padding(12)
+                    .padding(.trailing, 48)
+                    .background(Color(.systemGroupedBackground))
+                    .clipShape(Capsule())
 
                                             
                                         
+
+
                 Button(action: action) {
-                   Image(systemName: "arrow.up.circle.fill")
+                   Image(systemName: "paperplane.fill")
+                        .resizable()
+                        .frame(width: 32 , height: 32)
                         .foregroundColor(.yellow)
+                       
                         
                 }
                 
                 
             }
-        }.padding(.bottom, 8)
-         .padding(.horizontal)
+        }
          
 
     }
 }
-

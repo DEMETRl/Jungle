@@ -4,19 +4,26 @@ import SwiftUI
 import Kingfisher
 
 struct FeedCell: View {
+    
     @ObservedObject var viewModel: FeedCellViewModel
+    @State private var isShowingComments = false
     
     var didLike: Bool {return viewModel.post.didLike ?? false}
     
     init(viewModel: FeedCellViewModel) {
         self.viewModel = viewModel
+   
     }
     
     
     
     var body: some View {
         VStack(alignment: .leading) {
+            
+            
             HStack {
+                
+               
                 KFImage(URL(string: viewModel.post.ownerImageUrl))
                     .resizable()
                     .scaledToFill()
@@ -24,12 +31,14 @@ struct FeedCell: View {
                     .clipped()
                     .cornerRadius(18)
                 
-                Text(viewModel.post.ownerUsername)
-                    .font(.system(size: 14, weight:
-                            .semibold))
-                
-                
-                
+          
+               
+                    Text(viewModel.post.ownerUsername)
+                        .font(.system(size: 14, weight:
+                                .semibold))
+             
+
+               
             }
             .padding([.leading, .bottom], 8)
             
@@ -55,30 +64,35 @@ struct FeedCell: View {
                     
                     
                 })
+
+                Button(action: {
+                                   isShowingComments.toggle()
+                               }) {
+                                   Image(systemName: "message")
+                                       .resizable()
+                                       .scaledToFill()
+                                       .foregroundColor(.yellow)
+                                       .frame(width: 20, height: 20)
+                                       .font(.system(size: 20))
+                                       .padding(4)
+                               }
+                           } .sheet(isPresented: $isShowingComments) {
+                               CommentsView(post: viewModel.post)
+                             .presentationDetents([.height(500), .medium, .large])
                 
-                NavigationLink(destination: CommentsView(post: viewModel.post)) {
-                    Image(systemName: "message")
-                        .resizable()
-                        .scaledToFill()
-                        .foregroundColor(.yellow)
-                        .frame(width: 20, height: 20)
-                        .font(.system(size: 20))
-                        .padding(4)
-                    
-                }
                 
-                
-//                Button(action: {}, label:  {
-//
-//                    Image(systemName: "paperplane")
-//                        .resizable()
-//                        .scaledToFill()
-//                        .frame(width: 20, height: 20)
-//                        .font(.system(size: 20))
-//                        .padding(4)
-//
-//
-//                })
+
+                               
+                               
+                               
+                               
+                               
+                               
+                               
+                               
+                               
+                               
+                               
             }
             .padding(.leading, 4)
             .foregroundColor(.black)
@@ -111,4 +125,3 @@ struct FeedCell: View {
         }
     }
 }
-

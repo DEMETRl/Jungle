@@ -5,8 +5,10 @@ Jungle is a [firebase](https://firebase.google.com) based social media app that 
 
 
 
-<img src='/Screenshots/screenshot1.png' width='350'>
-<img src='/Screenshots/screenshot2.png' width='350'>
-<img src='/Screenshots/screenshot3.png' width='350'>
-<img src='/Screenshots/screenshot4.png' width='350'>
+# Updates 
 
+Made some UI tweaks and improvements.
+
+# Bug Fixes
+
+Fixed a bug where messages weren't displaying in order correctly.

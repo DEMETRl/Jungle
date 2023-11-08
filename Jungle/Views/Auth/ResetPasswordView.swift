@@ -19,9 +19,9 @@ struct ResetPasswordView: View {
             .ignoresSafeArea()
             
             VStack(){
-//                Image(systemName:)
+
                 Text("")
-                //    .resizable()
+    
                     .scaledToFit()
                     .frame(width: 90, height: 90)
                     .foregroundColor(.white)

@@ -19,8 +19,7 @@ struct SignInView: View {
                 
                 VStack(){
                     Text("")
-                  //  Image(systemName: )
-                     //   .resizable()
+             
                         .scaledToFit()
                         .frame(width: 220, height:220)
                         .foregroundColor(.white)

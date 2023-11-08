@@ -5,6 +5,7 @@ import Firebase
 class ChatViewModel: ObservableObject {
     let user: User
     @Published var messages = [Message]()
+    @Published var count = 0
     
     init(user: User) {
         self.user = user
@@ -18,8 +19,15 @@ class ChatViewModel: ObservableObject {
         let query = COLLECTION_MESSAGES.document(currentUid).collection(uid)
         
         query.addSnapshotListener { snapshot, error in
-            guard let changes = snapshot?.documentChanges.filter({ $0.type == .added }) else { return }            
-            self.messages.append(contentsOf: changes.compactMap({ try? $0.document.data(as: Message.self) })) 
+            guard let changes = snapshot?.documentChanges.filter({ $0.type == .added }) else { return }
+            let newMessages = changes.compactMap({ try? $0.document.data(as: Message.self) })
+            
+            
+            self.messages.append(contentsOf: newMessages.sorted(by: { $0.timestamp.dateValue() < $1.timestamp.dateValue() }))
+        }
+
+        DispatchQueue.main.async {
+            self.count += 1
         }
     }
     
@@ -47,5 +55,7 @@ class ChatViewModel: ObservableObject {
         receivingUserRef.document(messageID).setData(data)
         receivingRecentRef.document(currentUid).setData(data)
         currentRecentRef.document(uid).setData(data)
+        self.count += 1
     }
+    
 }

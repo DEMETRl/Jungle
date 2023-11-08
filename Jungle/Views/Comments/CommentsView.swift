@@ -20,7 +20,7 @@ struct CommentsView: View {
                     }
                 }
             }.padding(.top)
-           
+            
             
             CommentInputView(inputText: $commentText, action: uploadComment)
             
@@ -36,6 +36,12 @@ struct CommentsView: View {
     }
 
 }
+
+
+
+
+
+
 
 
 

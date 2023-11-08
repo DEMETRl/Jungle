@@ -38,12 +38,7 @@ struct ProfileActionButtonView: View {
                         .clipShape(Capsule())
                 })
                 }
-//                        .overlay(
-//                        RoundedRectangle(cornerRadius: 3)
-//                            .stroke(Color.gray, lineWidth:  isFollowed ? 1 : 0))
-//
-//                }).cornerRadius(3)
-//
+
 
             NavigationLink(destination: ChatView(user: viewModel.user)) {
                 Text("Message")
@@ -53,10 +48,7 @@ struct ProfileActionButtonView: View {
                     .foregroundColor(.white)
                   
                     .clipShape(Capsule())
-//                    .overlay(
-//                        RoundedRectangle(cornerRadius: 3)
-//                            .stroke(Color.gray, lineWidth: 1)
-//                    )
+
             }.navigationBarBackButtonHidden(true)
 
             
